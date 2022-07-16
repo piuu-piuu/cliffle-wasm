@@ -1,14 +1,20 @@
 // src/lib.rs
-#![no_std]
+// #![no_std]
 
 use core::sync::atomic::{AtomicU32, Ordering};
 
+const WIDTH: usize = 600;
+const HEIGHT: usize = 600;
+
+#[no_mangle]
+static mut BUFFER: [u32; WIDTH * HEIGHT] = [0; WIDTH * HEIGHT];
+
 static FRAME: AtomicU32 = AtomicU32::new(0);
 
-#[panic_handler]
-fn handle_panic(_: &core::panic::PanicInfo) -> ! {
-    loop {}
-}
+// #[panic_handler]
+// fn handle_panic(_: &core::panic::PanicInfo) -> ! {
+//     loop {}
+// }
 
 #[no_mangle]
 pub unsafe extern fn go() {
@@ -38,9 +44,3 @@ fn render_frame_safe(buffer: &mut [u32; WIDTH * HEIGHT]) {
         }
     }
 }
-
-const WIDTH: usize = 600;
-const HEIGHT: usize = 600;
-
-#[no_mangle]
-static mut BUFFER: [u32; WIDTH * HEIGHT] = [0; WIDTH * HEIGHT];
