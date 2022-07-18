@@ -1,4 +1,5 @@
 // src/lib.rs
+// in original tutorial there is no std
 // #![no_std]
 
 use core::sync::atomic::{AtomicU32, Ordering};
