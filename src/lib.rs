@@ -1,3 +1,5 @@
+// ./build.sh - to build
+// ../serve.py from www directory to display
 // src/lib.rs
 // in original tutorial there is no std
 // #![no_std]
